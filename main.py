@@ -8,6 +8,9 @@ from keep_alive import keep_alive
 import asyncio
 from asyncio import sleep
 import random
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 async def run():
