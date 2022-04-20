@@ -34,7 +34,7 @@ async def run():
             media = media.message_id
             end = time.time()
             try:
-              await bot.edit_message_caption(chat_id, media, f"Sent in {end-start} seconds")
+              await bot.edit_message_caption(chat_id, media, f"Sent in {end - start:.2f} seconds")
             except FloodWait as e:
               print(f"Edit floodwait for {e.x}")
               await asyncio.sleep(e.x)
@@ -48,7 +48,7 @@ async def run():
                 media = media.message_id
                 end = time.time()
                 try:
-                  await bot.edit_message_caption(chat_id, media, f"Sent in {end-start} seconds")
+                  await bot.edit_message_caption(chat_id, media, f"Sent in {end - start:.2f} seconds")
                 except FloodWait as e:
                  print(f"Edit floodwait for {x}")
                  await asyncio.sleep(x)
@@ -60,7 +60,7 @@ async def run():
                     media = media.message_id
                     end = time.time()
                     try:
-                      await bot.edit_message_caption(chat_id, media, f"Sent in {end-start} seconds")
+                      await bot.edit_message_caption(chat_id, media, f"Sent in {end - start:.2f} seconds")
                     except FloodWait as e:
                       print(f"Edit floodwait for {e.x}")
                       await asyncio.sleep(e.x)
