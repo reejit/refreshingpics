@@ -27,12 +27,12 @@ async def run():
         #headers = {'User-Agent': f"{random.randint(100000, 99999999)}"}
         file = "h.jpg"
         #await asyncio.sleep(1.5)
-        start = time.time()
+        #start = time.time()
         url = requests.get("https://source.unsplash.com/random").url
         try:
             media = await bot.send_photo(chat_id, photo=url)
-            media = media.message_id
-            end = time.time()
+            #media = media.message_id
+            #end = time.time()
             #try:
               #await bot.edit_message_caption(chat_id, media, f"Sent in {end - start:.2f} seconds")
             #except FloodWait as e:
@@ -45,8 +45,8 @@ async def run():
                 print("{} seconds".format(x))
                 await sleep(x)
                 media = await bot.send_photo(chat_id, photo=url)
-                media = media.message_id
-                end = time.time()
+                #media = media.message_id
+                #end = time.time()
             #    try:
              #     await bot.edit_message_caption(chat_id, media, f"Sent in {end - start:.2f} seconds")
             #    except FloodWait as e:
@@ -57,8 +57,8 @@ async def run():
                 download(url, file)
                 try:
                     media = await bot.send_photo(chat_id, photo=file)
-                    media = media.message_id
-                    end = time.time()
+                    #media = media.message_id
+                    #end = time.time()
                    # try:
                  #     await bot.edit_message_caption(chat_id, media, f"Sent in {end - start:.2f} seconds")
               #      except FloodWait as e:
