@@ -30,8 +30,8 @@ async def run():
         start = time.time()
         url = requests.get("https://source.unsplash.com/random").url
         try:
-            media = await bot.send_photo(chat_id, photo=url).message_id
-            #media = media.message_id
+            media = await bot.send_photo(chat_id, photo=url)
+            media = media.message_id
             end = time.time()
             try:
               await bot.edit_message_caption(chat_id, media, f"Sent in {end-start} seconds")
@@ -44,8 +44,8 @@ async def run():
                 x = e.x
                 print("{} seconds".format(x))
                 await sleep(x)
-                media = await bot.send_photo(chat_id, photo=url).message_id
-            #media = media.message_id
+                media = await bot.send_photo(chat_id, photo=url)
+                media = media.message_id
                 end = time.time()
                 try:
                   await bot.edit_message_caption(chat_id, media, f"Sent in {end-start} seconds")
@@ -56,8 +56,8 @@ async def run():
                 print(e)
                 download(url, file)
                 try:
-                    media = await bot.send_photo(chat_id, photo=file).message_id
-            #media = media.message_id
+                    media = await bot.send_photo(chat_id, photo=file)
+                    media = media.message_id
                     end = time.time()
                     try:
                       await bot.edit_message_caption(chat_id, media, f"Sent in {end-start} seconds")
