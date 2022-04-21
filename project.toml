@@ -1,0 +1,5 @@
+[[build.buildpacks]]
+uri = "heroku/python"
+
+[[build.buildpacks]]
+uri = "https://github.com/mtigas/heroku-buildpack-pypy.git"
