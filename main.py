@@ -25,28 +25,30 @@ async def run():
         no = random.choice(list)
         url = requests.get(no).url
         print(url)
+"""
         try:
           caption=s.dagd.short(url)
         except Exception as e:
           print(e)
           caption=""
         print(caption)
+"""
         try:
-            await bot.send_photo(chat_id, photo=url, caption=caption)
+            await bot.send_photo(chat_id, photo=url)
         except Exception as e:
             print(e)
             try:
                 x = e.x
                 print("{} seconds".format(x))
                 await sleep(x)
-                await bot.send_photo(chat_id, photo=url, caption=caption)
+                await bot.send_photo(chat_id, photo=url)
             except Exception as e:
                 print(e)
                 from wget import download
                 download(url, file)
                 from pyrogram.errors import FloodWait
                 try:
-                    await bot.send_photo(chat_id, photo=file, caption=caption)           
+                    await bot.send_photo(chat_id, photo=file)           
                 except FloodWait as e:
                     x = e.x
                     print("{} seconds".format(x))
