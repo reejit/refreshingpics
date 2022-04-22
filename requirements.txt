@@ -1,6 +1,6 @@
 pyrogram
 tgcrypto
 requests
-python-dotenv
+pyshorteners
 flask
 wget
