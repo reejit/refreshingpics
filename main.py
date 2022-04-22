@@ -2,12 +2,9 @@ from pyrogram import Client
 from requests import get
 import os
 from os import remove
-import asyncio
-from asyncio import sleep
+from asyncio import sleep, new_event_loop
 from random import choice
 async def run():
-    import pyshorteners
-    s = pyshorteners.Shortener()
     bot = Client(
         api_id=os.environ.get("API_ID"),
         api_hash=os.environ.get("HASH"),
@@ -46,5 +43,5 @@ async def run():
 
 if __name__ == "__main__":
     #keep_alive()
-    loop = asyncio.new_event_loop()
+    loop = new_event_loop()
     loop.run_until_complete(run())
