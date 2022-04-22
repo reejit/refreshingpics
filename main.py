@@ -30,14 +30,14 @@ async def run():
                 x = e.x
                 print("{} seconds".format(x))
                 await sleep(x)
-                await bot.send_photo(chat_id, photo=url, caption=url, disable_web_page_preview=True)
+                await bot.send_photo(chat_id, photo=url, caption=url)
             except Exception as e:
                 print(e)
                 from wget import download
                 download(url, file)
                 from pyrogram.errors import FloodWait
                 try:
-                    await bot.send_photo(chat_id, photo=file, caption=url, disable_web_page_preview=True)           
+                    await bot.send_photo(chat_id, photo=file, caption=url)           
                 except FloodWait as e:
                     x = e.x
                     print("{} seconds".format(x))
