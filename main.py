@@ -6,7 +6,7 @@ from os import remove
 import asyncio
 from asyncio import sleep
 import random
-list = ["https://source.unsplash.com/random","https://source.unsplash.com/random","https://source.unsplash.com/random", "https://picsum.photos/1080/1920",]
+list = ["https://source.unsplash.com/random","https://source.unsplash.com/random","https://source.unsplash.com/random", "https://picsum.photos/1080/1920","https://loremflickr.com/1080/1920"]
 async def run():
     import pyshorteners
     s = pyshorteners.Shortener()
