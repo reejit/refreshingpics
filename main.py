@@ -1,3 +1,48 @@
-pics = """\nfrom pyrogram import Client\nimport requests\nimport os\nfrom os import remove\n#from keep_alive import keep_alive\nimport asyncio\nfrom asyncio import sleep\n\n\nasync def run():\n    bot = Client(\n        api_id=os.environ.get("API_ID"),\n        api_hash=os.environ.get("HASH"),\n        bot_token=os.environ.get("TOKEN"),\n        session_name=":memory:",\n    )\n    chat_id = os.environ.get("CHAT_ID")\n    await bot.start()\n    while True:\n        file = "h.jpg"\n        url = requests.get("https://source.unsplash.com/random").url\n        try:\n            await bot.send_photo(chat_id, photo=url)\n        except Exception as e:\n            print(e)\n            try:\n                x = e.x\n                print("{} seconds".format(x))\n                await sleep(x)\n                await bot.send_photo(chat_id, photo=url)\n            except Exception as e:\n                print(e)\n                from wget import download\n                download(url, file)\n                from pyrogram.errors import FloodWait\n                try:\n                    await bot.send_photo(chat_id, photo=file)           \n                except FloodWait as e:\n                    x = e.x\n                    print("{} seconds".format(x))\n                    await sleep(x)\n                remove(file)\n\n\nif __name__ == "__main__":\n    #keep_alive()\n    loop = asyncio.new_event_loop()\n    loop.run_until_complete(run())\n"""
-exec(pics)
-#oneliner
+from pyrogram import Client
+import requests
+import os
+from os import remove
+#from keep_alive import keep_alive
+import asyncio
+from asyncio import sleep
+
+
+async def run():
+    bot = Client(
+        api_id=os.environ.get("API_ID"),
+        api_hash=os.environ.get("HASH"),
+        bot_token=os.environ.get("TOKEN"),
+        session_name=":memory:",
+    )
+    chat_id = os.environ.get("CHAT_ID")
+    await bot.start()
+    while True:
+        file = "h.jpg"
+        url = requests.get("https://source.unsplash.com/random").url
+        try:
+            await bot.send_photo(chat_id, photo=url)
+        except Exception as e:
+            print(e)
+            try:
+                x = e.x
+                print("{} seconds".format(x))
+                await sleep(x)
+                await bot.send_photo(chat_id, photo=url)
+            except Exception as e:
+                print(e)
+                from wget import download
+                download(url, file)
+                from pyrogram.errors import FloodWait
+                try:
+                    await bot.send_photo(chat_id, photo=file)           
+                except FloodWait as e:
+                    x = e.x
+                    print("{} seconds".format(x))
+                    await sleep(x)
+                remove(file)
+
+
+if __name__ == "__main__":
+    #keep_alive()
+    loop = asyncio.new_event_loop()
+    loop.run_until_complete(run())
