@@ -5,8 +5,8 @@ from os import remove
 #from keep_alive import keep_alive
 import asyncio
 from asyncio import sleep
-
-
+import random
+list = ["https://source.unsplash.com/random","https://source.unsplash.com/random","https://source.unsplash.com/random", "https://picsum.photos/1080/1920",]
 async def run():
     bot = Client(
         api_id=os.environ.get("API_ID"),
@@ -18,7 +18,10 @@ async def run():
     await bot.start()
     while True:
         file = "h.jpg"
-        url = requests.get("https://source.unsplash.com/random").url
+        random.shuffle(list)
+        random.shuffle(list)
+        no = random.choice(list)
+        url = requests.get(no).url
         try:
             await bot.send_photo(chat_id, photo=url)
         except Exception as e:
@@ -27,14 +30,14 @@ async def run():
                 x = e.x
                 print("{} seconds".format(x))
                 await sleep(x)
-                await bot.send_photo(chat_id, photo=url)
+                await bot.send_photo(chat_id, photo=url, caption=url, disable_web_page_preview=True)
             except Exception as e:
                 print(e)
                 from wget import download
                 download(url, file)
                 from pyrogram.errors import FloodWait
                 try:
-                    await bot.send_photo(chat_id, photo=file)           
+                    await bot.send_photo(chat_id, photo=file, caption=url, disable_web_page_preview=True)           
                 except FloodWait as e:
                     x = e.x
                     print("{} seconds".format(x))
