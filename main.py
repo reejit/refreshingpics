@@ -25,7 +25,7 @@ async def run():
         no = random.choice(list)
         print(no)
         url = requests.get(no).url
-        caption=s.bitly.short(url)
+        caption=s.dagd.short(url)
         try:
             await bot.send_photo(chat_id, photo=url, caption=caption)
         except Exception as e:
