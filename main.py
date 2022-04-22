@@ -23,9 +23,10 @@ async def run():
         random.shuffle(list)
         random.shuffle(list)
         no = random.choice(list)
-        print(no)
         url = requests.get(no).url
+        print(url)
         caption=s.dagd.short(url)
+        print('\n'+caption)
         try:
             await bot.send_photo(chat_id, photo=url, caption=caption)
         except Exception as e:
