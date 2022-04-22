@@ -8,6 +8,8 @@ from asyncio import sleep
 import random
 list = ["https://source.unsplash.com/random","https://source.unsplash.com/random","https://source.unsplash.com/random", "https://picsum.photos/1080/1920",]
 async def run():
+    import pyshorteners
+    s = pyshorteners.Shortener()
     bot = Client(
         api_id=os.environ.get("API_ID"),
         api_hash=os.environ.get("HASH"),
@@ -23,22 +25,23 @@ async def run():
         no = random.choice(list)
         print(no)
         url = requests.get(no).url
+        caption=s.bitly.short(url)
         try:
-            await bot.send_photo(chat_id, photo=url)
+            await bot.send_photo(chat_id, photo=url, caption=caption)
         except Exception as e:
             print(e)
             try:
                 x = e.x
                 print("{} seconds".format(x))
                 await sleep(x)
-                await bot.send_photo(chat_id, photo=url)
+                await bot.send_photo(chat_id, photo=url, caption=caption)
             except Exception as e:
                 print(e)
                 from wget import download
                 download(url, file)
                 from pyrogram.errors import FloodWait
                 try:
-                    await bot.send_photo(chat_id, photo=file)           
+                    await bot.send_photo(chat_id, photo=file, caption=caption)           
                 except FloodWait as e:
                     x = e.x
                     print("{} seconds".format(x))
