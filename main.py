@@ -2,11 +2,9 @@ from pyrogram import Client
 import requests
 import os
 from os import remove
-#from keep_alive import keep_alive
 import asyncio
 from asyncio import sleep
 import random
-list = ["https://source.unsplash.com/random","https://source.unsplash.com/random","https://source.unsplash.com/random", "https://picsum.photos/1080/1920","https://loremflickr.com/1080/1920"]
 async def run():
     import pyshorteners
     s = pyshorteners.Shortener()
@@ -20,17 +18,10 @@ async def run():
     await bot.start()
     while True:
         file = "h.jpg"
-        random.shuffle(list)
+        list = ["https://source.unsplash.com/random","https://source.unsplash.com/random","https://source.unsplash.com/random", "https://picsum.photos/1080/1920","https://loremflickr.com/1080/1920"]
         random.shuffle(list)
         no = random.choice(list)
-        url = requests.get(no).url
-        print(url)
-#        try:
-#          caption=s.dagd.short(url)
-#        except Exception as e:
-#          print(e)
-#          caption=""
-#        print(caption)
+        url = requests.get(no).url        
         try:
             await bot.send_photo(chat_id, photo=url)
         except Exception as e:
