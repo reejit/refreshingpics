@@ -12,10 +12,12 @@ from random import choice
 async def run():
 #creating telegram object
     bot = Client(
-        name=(__name__),
+        name=("ʀᴇꜰʀᴇꜱʜɪɴɢᴘɪᴄꜱ"),
         api_id=int(os.environ.get("API_ID")),
         api_hash=os.environ.get("HASH"),
         bot_token=os.environ.get("TOKEN"),
+        no_updates=True,
+        app_version="refershing1.3.1"
     )
 
  #getting chat_id passed as str like for @refreshingpics it's refreshingpics
