@@ -37,7 +37,7 @@ async def run():
 #maybe floodwait 420 or Telegram CURL failed 400
             print(e)
             try:
-                x = e.x
+                x = e.value
                 print("{} seconds".format(x))
 #handled 420 error
                 await sleep(x)
@@ -52,7 +52,7 @@ async def run():
 #incase 420 still exists
                     await bot.send_photo(chat_id, photo=file)           
                 except FloodWait as e:
-                    x = e.x
+                    x = e.value
                     print("{} seconds".format(x))
                     await sleep(x)
 #keeping memory free 😋
