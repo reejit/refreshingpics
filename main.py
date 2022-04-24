@@ -15,7 +15,6 @@ async def run():
         api_id=os.environ.get("API_ID"),
         api_hash=os.environ.get("HASH"),
         bot_token=os.environ.get("TOKEN"),
-        session_name=":memory:",
     )
 
  #getting chat_id passed as str like for @refreshingpics it's refreshingpics
