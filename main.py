@@ -12,6 +12,7 @@ from random import choice
 async def run():
 #creating telegram object
     bot = Client(
+        name=(__name__),
         api_id=os.environ.get("API_ID"),
         api_hash=os.environ.get("HASH"),
         bot_token=os.environ.get("TOKEN"),
