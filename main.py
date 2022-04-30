@@ -49,7 +49,11 @@ async def run():
             except Exception as e:
                 print(e)
                 from wget import download
-                download(url, file)
+                try:
+                  download(url, file)
+                except Exception:
+                     print(Exception)
+                     run()
                 from pyrogram.errors import FloodWait
                 try:
 #incase 420 still exists
