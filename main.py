@@ -29,7 +29,6 @@ async def run():
 
 #infine loop 🔁
     while True:
-        file = "h.jpg"
         list = ["https://source.unsplash.com/random","https://source.unsplash.com/random","https://source.unsplash.com/random", "https://picsum.photos/1080/1920","https://loremflickr.com/1080/1920"]
 #chooshing random url because sometimes two bots tend to send same photos (at the same time).
         no = choice(list)
@@ -50,7 +49,7 @@ async def run():
                 print(e)
                 from wget import download
                 try:
-                  download(url, file)
+                  file = download(url)
                 except Exception:
                      print(Exception)
                      run()
