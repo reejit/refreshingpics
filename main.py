@@ -5,13 +5,14 @@ import os
 from os import remove
 from asyncio import sleep, new_event_loop
 from random import choice
+import random
 
 # Imported all fu**ing libraries
 
 #main function 👇
 
 async def run():
-#creating telegram object
+#creating telegram objecta
     bot = Client(
         name=("ʀᴇꜰʀᴇꜱʜɪɴɢᴘɪᴄꜱ"),
         api_id=int(os.environ.get("API_ID")),
@@ -32,7 +33,8 @@ async def run():
         list = ["https://source.unsplash.com/random","https://source.unsplash.com/random","https://source.unsplash.com/random", "https://picsum.photos/1080/1920","https://loremflickr.com/1080/1920"]
 #chooshing random url because sometimes two bots tend to send same photos (at the same time).
         no = choice(list)
-        url = get(no).url        
+        url = get(no).url      
+        file = f"{random.randint(0, 9999)}.jpg"  
         try:
             await bot.send_photo(chat_id, photo=url)
         except Exception as e:
@@ -49,7 +51,7 @@ async def run():
                 print(e)
                 from wget import download
                 try:
-                  file = download(url)
+                  download(url, file)
                 except Exception:
                      print(Exception)
                      run()
@@ -62,7 +64,10 @@ async def run():
                     print("{} seconds".format(x))
                     await sleep(x)
 #keeping memory free 😋
-                remove(file)
+                try:
+                   remove(file)
+                except:
+                   pass
 
 
 if __name__ == "__main__":
